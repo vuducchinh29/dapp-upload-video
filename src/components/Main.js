@@ -16,16 +16,23 @@ class Main extends Component {
             <h3>{/* Code... */}</h3>
           </div>
           <div className="col-md-2 overflow-auto text-center" style={{ maxHeight: '768px', minWidth: '175px' }}>
-            <h5><b>{/* Share Video */}</b></h5>
+            <h5><b>Share Video</b></h5>
             <form onSubmit={(event) => {
               {/* Upload Video...*/}
             }} >
               &nbsp;
-              {/* Get Video...*/}
-              <div className="form-group mr-sm-2">
-                {/* Input...*/}
+              <input type="file" accept=".mp4, .mkv, .mov" onChange={this.props.captureFile} style={{width: '250px', marginBottom: 15, float: 'left'}}/>
+              <div className="form-group" style={{textAlign: 'left'}}>
+                <input
+                  id='videoTitle'
+                  type="text"
+                  className="form-control-sm"
+                  placeholder="Title..."
+                  required
+                  style={{width: '100%'}}
+                />
               </div>
-              {/* Button...*/}
+              <button type='submit' className='btn btn-danger btn-block btn-sm'>Upload</button>
               &nbsp;
             </form>
             {/* Map Video...*/}
