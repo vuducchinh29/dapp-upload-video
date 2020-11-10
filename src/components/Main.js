@@ -18,7 +18,9 @@ class Main extends Component {
           <div className="col-md-2 overflow-auto text-center" style={{ maxHeight: '768px', minWidth: '175px' }}>
             <h5><b>Share Video</b></h5>
             <form onSubmit={(event) => {
-              {/* Upload Video...*/}
+              event.preventDefault()
+              const title = this.videoTitle.value
+              this.props.uploadVideo(title)
             }} >
               &nbsp;
               <input type="file" accept=".mp4, .mkv, .mov" onChange={this.props.captureFile} style={{width: '250px', marginBottom: 15, float: 'left'}}/>
@@ -29,6 +31,7 @@ class Main extends Component {
                   className="form-control-sm"
                   placeholder="Title..."
                   required
+                  ref={(input) => {this.videoTitle = input}}
                   style={{width: '100%'}}
                 />
               </div>

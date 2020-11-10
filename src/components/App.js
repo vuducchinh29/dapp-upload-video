@@ -100,6 +100,16 @@ class App extends Component {
 
   //Upload video
   uploadVideo = title => {
+    console.log('Submitting file to IPFS...');
+    const {buffer, dvideo} = this.state
+
+    ipfs.add(buffer, (error, result) => {
+      console.log('IPFS result', result);
+      if (error) {
+        console.error(error);
+        return
+      }
+    })
 
   }
 
@@ -135,6 +145,7 @@ class App extends Component {
           ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
           : <Main
               captureFile = {this.captureFile}
+              uploadVideo = {this.uploadVideo}
             />
         }
       </div>
