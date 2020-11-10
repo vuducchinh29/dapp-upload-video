@@ -32,8 +32,11 @@ class App extends Component {
   async loadBlockchainData() {
     const web3 = window.web3
     //Load accounts
+    const accounts = await web3.eth.getAccounts()
+    this.setState({
+      account: accounts[0]
+    })
     //Add first account the the state
-
     //Get network ID
     //Get network data
     //Check if net data exists, then
@@ -70,7 +73,8 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false
+      loading: false,
+      account: '0x0'
       //set states
     }
 
@@ -78,10 +82,11 @@ class App extends Component {
   }
 
   render() {
+    const {account} = this.state
     return (
       <div>
         <Navbar 
-          //Account
+          account = {account}
         />
         { this.state.loading
           ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
