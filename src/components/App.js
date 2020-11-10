@@ -41,6 +41,15 @@ class App extends Component {
     const networkId = await web3.eth.net.getId()
     //Get network data
     const networkData = DVideoABIs.networks[networkId]
+    if (networkData) {
+      const dvideo = new web3.eth.Contract(DVideoABIs.abi, networkData.address)
+      this.setState({
+        dvideo
+      })
+    } else {
+      console.error('Dvideo contract not deployed to detected network');
+      window.alert('Dvideo contract not deployed to detected network');
+    }
     //Check if net data exists, then
       //Assign dvideo contract to a variable
       //Add dvideo to the state
