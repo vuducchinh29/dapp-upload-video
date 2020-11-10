@@ -84,8 +84,13 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false,
-      account: '0x0'
+      buffer: null,
+      account: '',
+      dvideo: null,
+      videos: [],
+      loading: true,
+      currentHash: null,
+      currentTitle: null
       //set states
     }
 
