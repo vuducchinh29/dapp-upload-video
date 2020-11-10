@@ -14,9 +14,10 @@ class Main extends Component {
               <video
                 src={`https://ipfs.infura.io/ipfs/${this.props.currentHash}`}
                 controls
+                autoPlay
               />
             </div>
-            <h3>{this.props.currentTitle}</h3>
+            <h3 style={{marginTop: 20}}><b><i>{this.props.currentTitle}</i></b></h3>
           </div>
           <div className="col-md-2 overflow-hidden text-center" style={{ maxHeight: '768px', minWidth: '175px' }}>
             <h5><b>Share Video</b></h5>
@@ -46,23 +47,25 @@ class Main extends Component {
               <button type='submit' className='btn btn-danger btn-block btn-sm'>Upload</button>
               &nbsp;
             </form>
-            {this.props.videos.map((video, index) => {
-              return (
-                <div key={index} className='card mb-4 text-center bg-secondary mx-auto' style={{ width: '100%'}}>
-                  <div className="card-title bg-dark">
-                    <small className="text-white"><b>{video.title}</b></small>
-                  </div>
-                    <div>
-                      <p onClick={()=>this.props.changeVideo(video.videoHash, video.title)}>
-                      <video
-                        src={`https://ipfs.infura.io/ipfs/${video.videoHash}`}
-                        style={{width: '100%'}}
-                      />
-                      </p>
+            <div style={{overflow: 'scroll', maxHeight: '570px'}}>
+              {this.props.videos.map((video, index) => {
+                return (
+                  <div key={index} className='card mb-4 text-center bg-secondary mx-auto' style={{ width: '60%'}}>
+                    <div className="card-title bg-dark">
+                      <small className="text-white"><b>{video.title}</b></small>
                     </div>
-                </div>
-              )
-            })}
+                      <div>
+                        <p onClick={()=>this.props.changeVideo(video.videoHash, video.title)}>
+                        <video
+                          src={`https://ipfs.infura.io/ipfs/${video.videoHash}`}
+                          style={{width: '100%'}}
+                        />
+                        </p>
+                      </div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
       </div>
