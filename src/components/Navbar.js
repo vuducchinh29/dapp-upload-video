@@ -22,7 +22,7 @@ class Navbar extends Component {
             <small className="text-secondary">
               <small id="account">{account}</small>
             </small>
-            {account!== '0x0' ?
+            {account ?
             <img
               className="ml-2"
               width="30"
