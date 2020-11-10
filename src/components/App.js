@@ -46,6 +46,24 @@ class App extends Component {
       this.setState({
         dvideo
       })
+      const videosCount = await dvideo.methods.videoCount().call()
+      this.setState({
+        videosCount
+      })
+      //load videos, sort by newest
+      for (let i = videosCount; i >= 1; i--) {
+        const video = await dvideo.methods.videos().call()
+        this.setState({
+          videos: [...this.state.videos, video]
+        })
+      }
+      //set lasted video with title to view as default
+      const lasted = await dvideo.methods.videos(videosCount).call()
+      this.setState({
+        currentHash: lasted.videoHash,
+        currentTitle: lasted.title
+      })
+      this.setState({loading: false})
     } else {
       console.error('Dvideo contract not deployed to detected network');
       window.alert('Dvideo contract not deployed to detected network');
