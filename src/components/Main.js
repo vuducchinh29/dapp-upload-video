@@ -11,11 +11,14 @@ class Main extends Component {
         <div className="row">
           <div className="col-md-10">
             <div className="embed-responsive embed-responsive-16by9" style={{ maxHeight: '768px'}}>
-              {/* Video... */}
+              <video
+                src={`https://ipfs.infura.io/ipfs/${this.props.currentHash}`}
+                controls
+              />
             </div>
-            <h3>{/* Code... */}</h3>
+            <h3>{this.props.currentTitle}</h3>
           </div>
-          <div className="col-md-2 overflow-auto text-center" style={{ maxHeight: '768px', minWidth: '175px' }}>
+          <div className="col-md-2 overflow-hidden text-center" style={{ maxHeight: '768px', minWidth: '175px' }}>
             <h5><b>Share Video</b></h5>
             <form onSubmit={(event) => {
               event.preventDefault()
@@ -23,7 +26,12 @@ class Main extends Component {
               this.props.uploadVideo(title)
             }} >
               &nbsp;
-              <input type="file" accept=".mp4, .mkv, .mov" onChange={this.props.captureFile} style={{width: '250px', marginBottom: 15, float: 'left'}}/>
+              <input 
+                type="file" 
+                accept=".mp4, .mkv, .mov" 
+                onChange={this.props.captureFile} 
+                style={{width: '100%', marginBottom: 15, float: 'left', overflow: 'hidden'}}
+              />
               <div className="form-group" style={{textAlign: 'left'}}>
                 <input
                   id='videoTitle'

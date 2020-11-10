@@ -52,7 +52,7 @@ class App extends Component {
       })
       //load videos, sort by newest
       for (let i = videosCount; i >= 1; i--) {
-        const video = await dvideo.methods.videos().call()
+        const video = await dvideo.methods.videos(i).call()
         this.setState({
           videos: [...this.state.videos, video]
         })
@@ -146,7 +146,7 @@ class App extends Component {
   }
 
   render() {
-    const {account} = this.state
+    const {account, currentHash, currentTitle} = this.state
     return (
       <div>
         <Navbar 
@@ -157,6 +157,9 @@ class App extends Component {
           : <Main
               captureFile = {this.captureFile}
               uploadVideo = {this.uploadVideo}
+              changeVideo = {this.changeVideo}
+              currentHash = {currentHash}
+              currentTitle = {currentTitle}
             />
         }
       </div>
