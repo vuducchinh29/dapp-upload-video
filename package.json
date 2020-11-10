@@ -1,8 +1,8 @@
 {
-  "name": "DVideo",
+  "name": "Chivideos",
   "version": "0.1.0",
   "description": "Decentralized platform for video publishing",
-  "author": "Dapp University",
+  "author": "Chiv - vuducchinh29",
   "homepage": ".",
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.1.0",
@@ -13,7 +13,7 @@
     "babel-preset-stage-3": "6.24.1",
     "babel-register": "6.26.0",
     "bootstrap": "^4.5.2",
-    "chai": "4.2.0",
+    "chai": "^4.2.0",
     "chai-as-promised": "7.1.1",
     "chai-bignumber": "3.0.0",
     "dotenv": "^8.2.0",
