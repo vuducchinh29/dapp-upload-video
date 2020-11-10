@@ -126,7 +126,10 @@ class App extends Component {
 
   //Change Video
   changeVideo = (hash, title) => {
-
+    this.setState({
+      currentHash: hash,
+      currentTitle: title
+    })
   }
 
   constructor(props) {
@@ -146,7 +149,7 @@ class App extends Component {
   }
 
   render() {
-    const {account, currentHash, currentTitle} = this.state
+    const {account, currentHash, currentTitle, videos} = this.state
     return (
       <div>
         <Navbar 
@@ -160,6 +163,7 @@ class App extends Component {
               changeVideo = {this.changeVideo}
               currentHash = {currentHash}
               currentTitle = {currentTitle}
+              videos = {videos}
             />
         }
       </div>
