@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DVideo from '../abis/DVideo.json'
+import DVideoABIs from '../abis/DVideo.json'
 import Navbar from './Navbar'
 import Main from './Main'
 import Web3 from 'web3';
@@ -38,7 +38,9 @@ class App extends Component {
     })
     //Add first account the the state
     //Get network ID
+    const networkId = await web3.eth.net.getId()
     //Get network data
+    const networkData = DVideoABIs.networks[networkId]
     //Check if net data exists, then
       //Assign dvideo contract to a variable
       //Add dvideo to the state
