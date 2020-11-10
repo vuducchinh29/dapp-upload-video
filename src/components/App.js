@@ -101,14 +101,25 @@ class App extends Component {
   //Upload video
   uploadVideo = title => {
     console.log('Submitting file to IPFS...');
-    const {buffer, dvideo} = this.state
+    const {buffer, dvideo, account} = this.state
 
     ipfs.add(buffer, (error, result) => {
-      console.log('IPFS result', result);
       if (error) {
         console.error(error);
         return
       }
+      this.setState({
+        loading: true
+      })
+
+      dvideo.methods.uploadVideo(result[0].hash, title)
+      .send({from: account})
+      .on('transactionHash', (hash) => {
+        this.setState({
+          loading: false
+        })
+        console.log('Uploaded to blockchain', hash);
+      })
     })
 
   }
