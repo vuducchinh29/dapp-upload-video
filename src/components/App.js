@@ -30,15 +30,16 @@ class App extends Component {
   }
 
   async loadBlockchainData() {
-    const web3 = window.web3
+    const ethereum = window.ethereum
+    const web3 = new Web3(ethereum)
     //Load accounts
-    const accounts = await web3.eth.getAccounts()
+    const account = web3.utils.toChecksumAddress(ethereum.selectedAddress)
     this.setState({
-      account: accounts[0]
+      account
     })
     //Add first account the the state
     //Get network ID
-    const networkId = await web3.eth.net.getId()
+    const networkId = await ethereum.networkVersion
     //Get network data
     const networkData = DVideoABIs.networks[networkId]
     if (networkData) {
@@ -59,7 +60,7 @@ class App extends Component {
       }
       //set lasted video with title to view as default
       const lasted = await dvideo.methods.videos(videosCount).call()
-      if (lasted.author === accounts[0]) {
+      if (lasted.author === account) {
         this.setState({
           currentHash: lasted.videoHash,
           currentTitle: lasted.title
@@ -90,7 +91,6 @@ class App extends Component {
   uploadVideo = title => {
     console.log('Submitting file to IPFS...');
     const {buffer, dvideo, account} = this.state
-
     ipfs.add(buffer, (error, result) => {
       if (error) {
         console.error(error);
