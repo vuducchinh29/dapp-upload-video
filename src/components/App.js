@@ -59,29 +59,17 @@ class App extends Component {
       }
       //set lasted video with title to view as default
       const lasted = await dvideo.methods.videos(videosCount).call()
-      this.setState({
-        currentHash: lasted.videoHash,
-        currentTitle: lasted.title
-      })
+      if (lasted.author === accounts[0]) {
+        this.setState({
+          currentHash: lasted.videoHash,
+          currentTitle: lasted.title
+        })
+      }
       this.setState({loading: false})
     } else {
       console.error('Dvideo contract not deployed to detected network');
       window.alert('Dvideo contract not deployed to detected network');
     }
-    //Check if net data exists, then
-      //Assign dvideo contract to a variable
-      //Add dvideo to the state
-
-      //Check videoAmounts
-      //Add videAmounts to the state
-
-      //Iterate throught videos and add them to the state (by newest)
-
-
-      //Set latest video and it's title to view as default 
-      //Set loading state to false
-
-      //If network data doesn't exisits, log error
   }
 
   //Get video
@@ -163,7 +151,7 @@ class App extends Component {
               changeVideo = {this.changeVideo}
               currentHash = {currentHash}
               currentTitle = {currentTitle}
-              videos = {videos}
+              videos = {videos.filter((video) => video.author === account)}
             />
         }
       </div>
