@@ -1,0 +1,17 @@
+.video-player {
+    max-height: 768px;
+}
+.right-sidebar {
+    max-height: 768px;
+    min-width: 175px;
+    .input-choose-file {
+        width: 100%;
+        margin-bottom: 15px; 
+        float: left;
+        overflow: hidden;
+    }
+    .list-recent-videos {
+        max-height: 570px;
+        overflow-y: auto;
+    }
+}
