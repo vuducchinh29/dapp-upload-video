@@ -2,15 +2,15 @@
 - Upload files onto IPFS.
 - Store the file's hash onto blockchain.
 
-## Dependencies
-- Ganache: https://www.trufflesuite.com/ganache
-- Metamask: https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn
-
-Setup testnet steps:
-- Create new workspace in Ganache
-- Add custom rpc in Metamask with rpc url: HTTP://127.0.0.1:7545
-- Import account from Ganache to Metamask by privateKey
+## Tools
+- ezDeFi wallet: https://chrome.google.com/webstore/detail/ezdefi/ejeemacpidnaejkhpbmfkadhgjhnolaa
+Steps:
+- Open ezDeFi wallet
+- Choose More Assets, find and tick Rinkeby
+- Import account with privateKey same in .env file.
+- In Homepage, click Đapp on header and select your account to connect Dapp
 
 ## Start project
+- Config privateKey, Infura API key in .env
 - yarn
 - yarn start
